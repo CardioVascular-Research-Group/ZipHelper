@@ -4,8 +4,10 @@
 <project name="ZipHelper" basedir="." default="generateJarFiles">
 
 	<property name="liferay" value="/opt/liferay" />
+	
 	<property file="${liferay}/liferay-plugins-sdk-6.1.1/build.${user.name}.properties" />
 	<property name="dependencies" value="${liferay}/projects-dependencies" />
+	<property name="tomcat-axis-lib" value="${app.server.deploy.dir}/axis2/WEB-INF/lib"/>
 
 	<target name="clean">
 		<echo>Clean the temporary area</echo>
@@ -28,7 +30,7 @@
     	<mkdir dir="${dependencies}/cvrg-broker-service-dependencies"/>
 		
 		<copy todir="${dependencies}/cvrg-broker-service-dependencies" file="build/dist/zipHelper.jar" />
-		
+		<copy todir="${tomcat-axis-lib}" file="build/dist/zipHelper.jar" />
 	</target>
 	
 </project>
